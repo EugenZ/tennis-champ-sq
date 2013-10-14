@@ -1,0 +1,50 @@
+@(t: List[Team])(implicit flash: Flash)
+
+@teamCell(team: Team) = {
+	<div class="btn-group">
+		<button class="btn btn-info">@team.name </button>
+	  	<button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+	    	<span class="caret"></span>
+	  	</button>
+	  	<ul class="dropdown-menu">
+	    <!-- dropdown menu links -->
+	    @team.teamPlayers.map { case(player) =>
+	    	<li><a href="/player/@player.id">@player.name</a></li>
+	    }
+	  	</ul>
+	</div>
+}
+
+@main("Pair Tennis Championnship") {
+      
+	<div class="panel panel-default">
+		<div class="panel-heading text-center"><h1>1st Swissquote tennis doubles championship</h1></div>
+  		<table class="table">
+  			<tr>
+  				<td class="text-middle">
+  					<span><b>Teams</b></span>
+  				</td>		
+           		@t.map {  case(team) =>
+           		<td>
+               		@teamCell(team)
+         		</td>
+				}
+			</tr>
+			
+			@t.zipWithIndex.map { case(team: Team, i: Int) =>
+          	<tr>
+          		<td>
+              		@teamCell(team)
+      			</td>
+      			@for(index <- 1 to t.size) {
+      			<td class="text-center">
+      				<button type="button" class="btn btn-primary" data-toggle="button">
+      				N/A
+      				</button>      				
+      			</td>
+      			}
+       		</tr>
+			}
+ 		</table>
+ 	</div>
+}

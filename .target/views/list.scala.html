@@ -1,0 +1,35 @@
+@(players: List[Player])(implicit flash: Flash)
+
+@**********************************
+* Helper generating table headers *
+***********************************@
+@header(orderBy: Int, title: String) = {
+    <th class="header">
+        @title
+    </th>
+}
+
+@main("scala") {
+    
+    <h1>First pair Swissquote tennis championship</h1>
+ 
+        <table class="computers zebra-striped">
+            <thead>
+                <tr>
+                    @header(2, "Name")
+                    @header(3, "Native name")
+                    @header(4, "Username")
+                    @header(5, "email")
+                </tr>
+            </thead>
+            <tbody>
+
+                 
+
+            </tbody>
+        </table>
+
+        
+}
+
+            
